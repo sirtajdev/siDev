@@ -1,0 +1,26 @@
+/* Apply hover enlargement only when a precise pointing device is available. */
+@media (hover: hover) and (pointer: fine) {
+	a,
+	button,
+	.brand-mark,
+	.title-block,
+	.downloads-panel,
+	.page-header,
+	.credits-section,
+	.download-image,
+	.mini-logo {
+		transition: transform 180ms ease;
+	}
+
+	a:hover,
+	button:hover,
+	.brand-mark:hover,
+	.title-block:hover,
+	.downloads-panel:hover,
+	.page-header:hover,
+	.credits-section:hover,
+	.download-image:hover,
+	.mini-logo:hover {
+		transform: scale(1.015);
+	}
+}
