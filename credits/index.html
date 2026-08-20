@@ -12,8 +12,8 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Downloads - siDev</title>
-    <link rel="icon" type="image/png" href="Assets/sttm-linux.png" />
+    <title>Credits - siDev</title>
+    <link rel="icon" type="image/png" href="../Assets/Frame 2.png" />
     <style>
       :root {
         --bg-1: #071c2d;
@@ -107,76 +107,73 @@
         background: rgba(103, 180, 255, 0.08);
       }
 
-      .downloads-panel {
-        margin-top: 28px;
+      .page-header {
+        background: rgba(12, 26, 39, 0.38);
         border: 1px solid var(--line);
         border-radius: 28px;
-        background: rgba(8, 18, 28, 0.54);
-        padding: 26px;
+        padding: 30px 30px 28px;
+        box-shadow: 0 22px 50px rgba(1, 11, 18, 0.25);
+        margin-bottom: 28px;
       }
 
-      .downloads-panel h2 {
+      .page-header h1 {
+        font-size: clamp(2.3rem, 5vw, 4rem);
+        line-height: 1.08;
+        margin: 0;
+      }
+
+      .credits-section {
+        background: rgba(12, 26, 39, 0.38);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: 0 22px 50px rgba(1, 11, 18, 0.25);
+        margin-bottom: 24px;
+      }
+
+      .credits-section h2 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
         margin-top: 0;
-        font-size: clamp(1.5rem, 3vw, 2.3rem);
+        margin-bottom: 18px;
+        color: var(--accent-2);
       }
 
-      .download-layout {
-        display: grid;
-        grid-template-columns: 1.3fr 0.7fr;
-        gap: 22px;
-        align-items: center;
+      .credit-item {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--line);
       }
 
-      .download-image {
-        width: 100%;
-        border-radius: 22px;
-        border: 1px solid rgba(255,255,255,0.18);
-        background: rgba(255,255,255,0.02);
+      .credit-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
       }
 
-      .download-options {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+      .credit-item h3 {
+        margin: 0 0 8px;
+        color: var(--accent-1);
+        font-size: 1.1rem;
       }
 
-      .download-option {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .download-button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 190px;
-        padding: 16px 20px;
-        border-radius: 14px;
-        color: #041922;
-        font-weight: 700;
-        text-decoration: none;
-        background: linear-gradient(135deg, var(--button-1), var(--button-2));
-        box-shadow: 0 12px 28px rgba(77, 181, 255, 0.28);
-        transition: transform 0.18s ease, filter 0.18s ease;
-      }
-
-      .download-button:hover {
-        transform: translateY(-1px);
-        filter: brightness(1.04);
-      }
-
-      .download-description {
-        font-size: 0.9rem;
+      .credit-item p {
+        margin: 0;
         color: var(--muted);
-        margin-top: 4px;
+        line-height: 1.6;
+      }
+
+      .credit-item a {
+        color: var(--accent-2);
+        text-decoration: none;
+        transition: 0.2s ease;
+      }
+
+      .credit-item a:hover {
+        color: var(--accent-3);
+        text-decoration: underline;
       }
 
       @media (max-width: 780px) {
-        .download-layout {
-          grid-template-columns: 1fr;
-        }
-
         .topbar {
           flex-direction: column;
           align-items: flex-start;
@@ -189,33 +186,48 @@
       <header class="topbar">
         <div class="brand" aria-label="siDev brand">
           <div class="brand-mark">
-            <img src="Assets/Frame 2.png" alt="siDev icon" />
+            <img src="../Assets/Frame 2.png" alt="siDev icon" />
           </div>
           <span>siDev</span>
         </div>
 
         <nav aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="downloads.html">Downloads</a>
-          <a href="credits.html">Credits</a>
+          <a href="/">Home</a>
+          <a href="/downloads/">Downloads</a>
+          <a href="/credits/">Credits</a>
         </nav>
       </header>
 
       <main>
-        <section class="downloads-panel">
-          <h2>Downloads</h2>
-          <div class="download-layout">
-            <img class="download-image" src="Assets/sttm-linux.png" alt="siDev Linux app icon" />
-            <div class="download-options">
-              <div class="download-option">
-                <a href="https://www.dropbox.com/scl/fi/nuhh5if7ppzwgdkg840n9/sttm-desktop_9.3.2_amd64.deb?rlkey=gkp4om6rwzqdkcjkrdy69q1xt&st=y51c4i61&dl=1" class="download-button">Download (.deb)</a>
-                <p class="download-description">For Ubuntu, Debian, and Linux Mint</p>
-              </div>
-              <div class="download-option">
-                <a href="https://www.dropbox.com/scl/fi/ezp63b8jhozmw6u7rexwo/SikhiToTheMax-9.3.2.AppImage?rlkey=n3sq6ffs0qozze3t4bphwfmeg&st=9muhlalx&dl=1" class="download-button">Download (.AppImage)</a>
-                <p class="download-description">Universal software package format</p>
-              </div>
-            </div>
+        <section class="page-header">
+          <h1>Credits</h1>
+        </section>
+
+        <section class="credits-section">
+          <h2>Image Credits</h2>
+          
+          <div class="credit-item">
+            <h3>Linux Logo</h3>
+            <p>Linux Logo icon by Icon-Icons (Original Tux design by Larry Ewing)</p>
+          </div>
+
+          <div class="credit-item">
+            <h3>SikhiToTheMax App Icon</h3>
+            <p>App icon provided by the Khalis Foundation (<a href="https://www.sikhitothemax.org/" target="_blank">https://www.sikhitothemax.org/</a>)</p>
+          </div>
+        </section>
+
+        <section class="credits-section">
+          <h2>Code & Development</h2>
+          
+          <div class="credit-item">
+            <h3>SikhiToTheMax Desktop</h3>
+            <p>We used open-source code from <a href="https://github.com/KhalisFoundation/sttm-desktop" target="_blank">KhalisFoundation/sttm-desktop</a> for Linux compilation</p>
+          </div>
+
+          <div class="credit-item">
+            <h3>Compilation & Website Design</h3>
+            <p>Iknoor Singh and Sirtaj Suri</p>
           </div>
         </section>
       </main>
