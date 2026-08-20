@@ -110,6 +110,17 @@
         background: rgba(103, 180, 255, 0.08);
       }
 
+      body { animation: page-enter 0.7s ease both; }
+      .topbar, main { animation: content-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+      main { animation-delay: 0.08s; }
+      .page-header, .credits-section { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+      .page-header:hover, .credits-section:hover { transform: translateY(-4px); box-shadow: 0 26px 60px rgba(1, 11, 18, 0.4); }
+      @keyframes page-enter { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes content-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+      }
+
       .nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
       .menu-button { display: none; }
       .menu-button::before {
@@ -117,33 +128,11 @@
         box-shadow: 0 5px currentColor, 0 10px currentColor;
       }
       .topbar-tools { display: flex; align-items: center; gap: 12px; }
-      .accessibility-menu { position: relative; }
-      .accessibility-menu summary, .menu-button {
+      .menu-button {
         color: var(--text); cursor: pointer; padding: 10px 14px;
         border: 1px solid var(--line); border-radius: 999px;
         background: rgba(255, 255, 255, 0.02); font: inherit;
       }
-      .accessibility-menu summary { list-style: none; }
-      .accessibility-menu summary::-webkit-details-marker { display: none; }
-      .accessibility-panel {
-        position: absolute; z-index: 2; right: 0; top: calc(100% + 8px);
-        width: 220px; padding: 14px; border: 1px solid var(--line);
-        border-radius: 14px; background: #071c2d;
-        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
-      }
-      .accessibility-panel label, .accessibility-panel a { display: block; color: var(--text); padding: 8px 0; }
-      .skip-link { position: absolute; left: 12px; top: -60px; z-index: 3; padding: 10px 14px; color: #041922; background: var(--accent-2); }
-      .skip-link:focus { top: 12px; }
-      body:has(#large-text:checked) .container { font-size: 1.12em; }
-      body:has(#high-contrast:checked) { --text: #ffffff; --muted: #ffffff; --line: rgba(255, 255, 255, 0.75); }
-      body.light-theme { background: #eef4f7; color: #102331; }
-      body.light-theme .page-header,
-      body.light-theme .credits-section,
-      body.light-theme .accessibility-panel,
-      body.light-theme nav { background: #ffffff; color: #102331; }
-      body.light-theme nav a,
-      body.light-theme .accessibility-panel label,
-      body.light-theme .accessibility-panel a { color: #102331; }
 
       .page-header {
         background: rgba(12, 26, 39, 0.38);
@@ -220,19 +209,19 @@
         .topbar-tools { align-self: stretch; position: relative; flex-wrap: wrap; justify-content: flex-end; }
         .menu-button { display: block; }
         nav {
-          display: none; position: absolute; right: 0; top: calc(100% + 8px); z-index: 2;
+          display: flex; visibility: hidden; opacity: 0; pointer-events: none; transform: translateY(-8px) scale(0.98);
+          position: absolute; right: 0; top: calc(100% + 8px); z-index: 2;
           min-width: 180px; padding: 10px; flex-direction: column;
           border: 1px solid var(--line); border-radius: 14px; background: #071c2d;
         }
         nav a { border: 0; border-radius: 8px; }
-        .nav-toggle:checked ~ nav { display: flex; }
+        .nav-toggle:checked ~ nav { visibility: visible; opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
         .topbar-tools nav { order: 3; width: 100%;
         }
       }
     </style>
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="container">
       <header class="topbar">
         <div class="brand" aria-label="siDev brand">
@@ -243,15 +232,6 @@
         </div>
 
         <div class="topbar-tools">
-          <details class="accessibility-menu">
-            <summary>Accessibility</summary>
-            <div class="accessibility-panel">
-              <label><input type="checkbox" id="large-text" /> Larger text</label>
-              <label><input type="checkbox" id="high-contrast" /> Higher contrast</label>
-              <label><input type="checkbox" id="light-theme" /> Light theme</label>
-              <a href="#main-content">Skip to content</a>
-            </div>
-          </details>
           <label class="menu-button" for="nav-toggle" role="button" tabindex="0" aria-controls="main-nav" aria-expanded="false">Menu</label>
           <input class="nav-toggle" type="checkbox" id="nav-toggle" />
           <nav id="main-nav" aria-label="Main navigation">
