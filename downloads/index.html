@@ -16,7 +16,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <script src="../js/script.js" defer></script>
     <title>Downloads - siDev</title>
-    <link rel="icon" type="image/png" href="Assets/sttm-linux.png" />
+    <link rel="icon" type="image/png" href="../Assets/Frame 2.png" />
     <style>
       :root {
         --bg-1: #071c2d;
@@ -61,6 +61,8 @@
         align-items: center;
         gap: 20px;
         padding: 10px 0 26px;
+        position: relative;
+        z-index: 10;
       }
 
       .brand {
@@ -123,17 +125,26 @@
       }
 
       .nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
-      .menu-button { display: none; }
+      .menu-button { display: inline-flex; align-items: center; gap: 10px; position: relative; z-index: 21; }
       .menu-button::before {
         content: ""; width: 16px; height: 2px; background: currentColor;
         box-shadow: 0 5px currentColor, 0 10px currentColor;
       }
-      .topbar-tools { display: flex; align-items: center; gap: 12px; }
+      .topbar-tools { display: flex; align-items: center; gap: 12px; position: relative; z-index: 20; }
       .menu-button {
         color: var(--text); cursor: pointer; padding: 10px 14px;
         border: 1px solid var(--line); border-radius: 999px;
         background: rgba(255, 255, 255, 0.02); font: inherit;
       }
+      .topbar-tools nav {
+        display: none; position: absolute; right: 0; top: calc(100% + 10px); z-index: 20;
+        min-width: 190px; padding: 10px; flex-direction: column; flex-wrap: nowrap;
+        border: 1px solid var(--line); border-radius: 14px; background: #071c2d;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
+        opacity: 0; transform: translateY(-8px) scale(0.98); transition: opacity 0.22s ease, transform 0.22s ease;
+      }
+      .topbar-tools nav a { border: 0; border-radius: 8px; }
+      .nav-toggle:checked ~ nav { display: flex; opacity: 1; transform: translateY(0) scale(1); }
 
       .downloads-panel {
         margin-top: 28px;
@@ -211,7 +222,7 @@
         }
 
         .topbar-tools { align-self: stretch; position: relative; flex-wrap: wrap; justify-content: flex-end; }
-        .menu-button { display: block; }
+        .menu-button { display: inline-flex; }
         nav {
           display: flex; visibility: hidden; opacity: 0; pointer-events: none; transform: translateY(-8px) scale(0.98);
           position: absolute; right: 0; top: calc(100% + 8px); z-index: 2;
@@ -230,7 +241,7 @@
       <header class="topbar">
         <div class="brand" aria-label="siDev brand">
           <div class="brand-mark">
-            <img src="Assets/Frame 2.png" alt="siDev icon" />
+            <img src="../Assets/Frame 2.png" alt="siDev icon" />
           </div>
           <span>siDev</span>
         </div>
