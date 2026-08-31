@@ -16,7 +16,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <script src="../js/script.js" defer></script>
     <title>Downloads - siDev</title>
-    <link rel="icon" type="image/png" href="../Assets/Frame 2.png" />
+    <link rel="icon" type="image/png" href="../Assets/siDev2.png" />
     <style>
       :root {
         --bg-1: #071c2d;
@@ -125,17 +125,47 @@
       }
 
       .nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
-      .menu-button { display: inline-flex; align-items: center; gap: 10px; position: relative; z-index: 21; }
+      .menu-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        position: relative;
+        z-index: 21;
+        color: var(--text);
+        cursor: pointer;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.02);
+        font: inherit;
+        transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      }
+      .menu-button:hover {
+        border-color: rgba(130, 212, 255, 0.6);
+        background: rgba(103, 180, 255, 0.08);
+      }
+      .menu-button::before,
+      .menu-button::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        width: 16px;
+        height: 2px;
+        background: currentColor;
+        border-radius: 999px;
+        transform: translateX(-50%);
+        transition: transform 0.28s ease, opacity 0.28s ease, top 0.28s ease, bottom 0.28s ease;
+      }
       .menu-button::before {
-        content: ""; width: 16px; height: 2px; background: currentColor;
-        box-shadow: 0 5px currentColor, 0 10px currentColor; transition: transform 0.25s ease, box-shadow 0.25s ease;
+        top: 15px;
+        box-shadow: 0 6px 0 0 currentColor;
+      }
+      .menu-button::after {
+        bottom: 15px;
       }
       .topbar-tools { display: flex; align-items: center; gap: 12px; position: relative; z-index: 20; }
-      .menu-button {
-        color: var(--text); cursor: pointer; padding: 10px 14px;
-        border: 1px solid var(--line); border-radius: 999px;
-        background: rgba(255, 255, 255, 0.02); font: inherit;
-      }
       .topbar-tools nav {
         display: none; position: absolute; right: 0; top: calc(100% + 10px); z-index: 20;
         min-width: 190px; padding: 10px; flex-direction: column; flex-wrap: nowrap;
@@ -249,13 +279,13 @@
       <header class="topbar">
         <div class="brand" aria-label="siDev brand">
           <div class="brand-mark">
-            <img src="../Assets/Frame 2.png" alt="siDev icon" />
+            <img src="../Assets/siDev2.png" alt="siDev icon" />
           </div>
           <span>siDev</span>
         </div>
 
         <div class="topbar-tools">
-          <label class="menu-button" for="nav-toggle" role="button" tabindex="0" aria-controls="main-nav" aria-expanded="false">Menu</label>
+          <label class="menu-button" for="nav-toggle" role="button" tabindex="0" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation menu"></label>
           <input class="nav-toggle" type="checkbox" id="nav-toggle" />
           <nav id="main-nav" aria-label="Main navigation">
             <a href="/">Home</a>
